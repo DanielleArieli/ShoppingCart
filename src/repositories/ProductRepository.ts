@@ -13,15 +13,15 @@ class ProductRepository {
     return await Product.create(product);
   }
 
-  public async update(sku: number, user: Partial<Product>): Promise<[number]> {
-    return await Product.update(user, {
-      where: { sku },
+  public async update(sku: number, product: Partial<Product>): Promise<[number]> {
+    return await Product.update(product, {
+      where: { sku: sku },
     });
   }
 
   public async delete(sku: number): Promise<number> {
     return await Product.destroy({
-      where: { sku },
+      where: { sku: sku },
     });
   }
 }

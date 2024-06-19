@@ -1,5 +1,6 @@
 import express from 'express';
 import productRoutes from './routes/productRoutes';
+import cartRoutes from './routes/cartRoutes';
 import sequelize from './config/database';
 import dotenv from 'dotenv';
 
@@ -11,6 +12,8 @@ const port = process.env.PORT;
 app.use(express.json());
 
 app.use('/products', productRoutes);
+app.use('/cart', cartRoutes);
+
 
 sequelize.sync().then(() => {
   console.log('Database synchronized');
