@@ -13,7 +13,7 @@ export const getAllProducts = async (req: Request, res: Response): Promise<void>
 
 // Get product by SKU
 export const getProductBySku = async (req: Request, res: Response): Promise<void> => {
-  const productSku = parseInt(req.params.sku);
+  const productSku = parseInt(req.query.sku as string);
   try {
     const product = await ProductService.getProductBySku(productSku);
     if (product) {
@@ -38,7 +38,8 @@ export const createProduct = async (req: Request, res: Response): Promise<void> 
 
 // Update product
 export const updateProduct = async (req: Request, res: Response): Promise<void> => {
-  const productSku = parseInt(req.params.sku);
+  const productSku = parseInt(req.query.sku as string);
+
   try {
     const updateProduct = await ProductService.updateProduct(productSku, req.body);
     if (updateProduct) {
@@ -53,7 +54,8 @@ export const updateProduct = async (req: Request, res: Response): Promise<void> 
 
 // Delete product
 export const deleteProduct = async (req: Request, res: Response): Promise<void> => {
-  const productSku = parseInt(req.params.sku);
+  const productSku = parseInt(req.query.sku as string);
+
   try {
     const deletedProduct = await ProductService.deleteProduct(productSku);
     if (deletedProduct) {
